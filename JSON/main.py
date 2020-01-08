@@ -3,6 +3,16 @@ import ssd1306
 from time import sleep
 import network
 
+import json
+
+with open('config.json') as config_file:
+    credentials = json.load(config_file)
+
+
+
+
+
+
 # ESP8266 Pin assignment
 i2c = I2C(-1, scl=Pin(4), sda=Pin(5))
 oled_width = 128
@@ -10,6 +20,8 @@ oled_height = 64
 oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
 
 #--------------------------------
+
+
 
 def draw_circle( x0, y0, radius):
     x = radius
@@ -35,18 +47,44 @@ def draw_circle( x0, y0, radius):
 
 
 oled.fill(0)
+oled.show()
+
+for i in range(63):
+    oled.pixel(0,i,1)
+    oled.show
+    sleep(0.002)
+
+for i in range(127):
+    oled.pixel(i,63,1)
+    oled.show
+    sleep(0.002)
+
+for i in range(63):
+    oled.pixel(127,i,1)
+    oled.show
+    sleep(0.002)
+
+for i in range(127):
+    oled.pixel(i,0,1)
+    oled.show
+    sleep(0.002)
 
 for r in range(15):
     draw_circle(64, 32 , r*2)
     sleep(0.02)
-oled.show()
+
+
+
+
+
+
 sleep(2)
 oled.fill(0)
 
 sta_if = network.WLAN(network.STA_IF)
 sta_if.active(False)
 sta_if.active(True)
-sta_if.connect('MCLEANS','agwaya234')
+sta_if.connect(credentials['ssid'],credentials['ssid_password'])
 
 if not sta_if.isconnected():
     oled.text('CONNECTING TO  ',0,0)
