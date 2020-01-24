@@ -127,13 +127,19 @@ oled.show()
 while (True):
     response = requests.get(url ="https://tukdata.herokuapp.com/data/real-time")
     data = json.loads(response.text)
-    value = data['temperature']
+    Temp = data['temperature']
+    Humidity = data['humidity']
+    AirQuality = data['airQuality']
     oled.fill(0)
     oled.show()
     oled.text("IOT DASHBOARD",10,0)
-    oled.text("TEMPERATURE",20,30)
-    oled.text(str(value),20,50)
-    oled.text("celsius",70,50)
+    oled.text("TEMPERATURE :",0,20)
+    oled.text(str(Temp),100,20)
+    oled.text("HUMIDITY :",0,30)
+    oled.text(str(Humidity),100,30)
+    oled.text("AIR QUALITY : ",0,40)
+    oled.text(str(AirQuality),100,40)
+    
     oled.show()
     
     
