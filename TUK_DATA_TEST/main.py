@@ -125,7 +125,7 @@ oled.fill(0)
 oled.show()
 
 while (True):
-    response = requests.get(url ="https://1b2561ce.ngrok.io/data/real-time")
+    response = requests.get(url ="https://tukdata.herokuapp.com/data/real-time")
     data = json.loads(response.text)
     value = data['temperature']
     oled.fill(0)
