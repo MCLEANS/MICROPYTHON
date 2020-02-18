@@ -137,8 +137,9 @@ while (True):
     oled.text(str(Temp),100,20)
     oled.text("HUMIDITY :",0,30)
     oled.text(str(Humidity),100,30)
-    oled.text("AIR QUALITY : ",0,40)
-    oled.text(str(AirQuality),100,40)
+    oled.text("AIR  : ",0,40)
+    oled.text("QUALITY : ",0,50)
+    oled.text(str(AirQuality),70,45)
     
     oled.show()
     
